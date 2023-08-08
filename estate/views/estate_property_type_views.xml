@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+
+<odoo>
+    <record id="estate_property_type_model_action" model="ir.actions.act_window">
+        <field name="name">Property Types</field>
+        <field name="res_model">estate.type.model</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="estate_property_type_view_form" model="ir.ui.view">
+        <field name="name">estate.property.type.form</field>
+        <field name="model">estate.type.model</field>
+        <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button id="save" string="save"/>
+                        <button id="cancel" string="cancel"/>
+                    </header>
+                    <sheet>
+                        <div>
+                            <button type="action" name="estate.estate_property_offer_model_action" string="Offers"/>
+                        </div>
+                        <div>
+                            <h1>
+                                <field name="name" string="Type"/>
+                            </h1>
+                        </div>
+                        <notebook>
+                            <page string="Properties">
+                                <field name="property_ids">
+                                    <tree>
+                                        <field name="name" string="Title"/>
+                                        <field name="expected_price" string="Expected Price"/>
+                                        <field name="state" string="Status"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+        </field>
+    </record>
+
+    <record id="estate_property_type_view_tree" model="ir.ui.view">
+        <field name="name">estate.property.type.tree</field>
+        <field name="model">estate.type.model</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence" widget="handle"/>
+                <field name="name" string="Type"/>
+                <field name="offer_ids" string="Properties"/>
+                <field name="offer_count" string="Number of offers"/>
+            </tree>
+        </field>
+    </record>
+</odoo>
